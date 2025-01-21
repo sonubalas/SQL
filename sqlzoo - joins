@@ -1,0 +1,106 @@
+Total world population
+1.
+Show the total population of the world.
+
+world(name, continent, area, population, gdp)
+select sum(population) from world
+
+Correct answer
+sum(population)
+7118632738
+List of continents
+2.
+List all the continents - just once each.
+
+select distinct(continent) from world
+Submit SQLrestore default
+Correct answer
+continent
+Africa
+Asia
+Caribbean
+Eurasia
+Europe
+North America
+Oceania
+South America
+GDP of Africa
+3.
+Give the total GDP of Africa
+
+select sum(gdp) from world where continent='Africa'
+Submit SQLrestore default
+Correct answer
+sum(gdp)
+1811788000000
+Count the big countries
+4.
+How many countries have an area of at least 1000000
+
+select count(name) from world where area > 1000000
+  
+Correct answer
+count(name)
+29
+Baltic states population
+5.
+What is the total population of ('Estonia', 'Latvia', 'Lithuania')
+
+select sum(population) from world where name in ('Estonia', 'Latvia', 'Lithuania')
+Submit SQLrestore default
+Correct answer
+sum(population)
+6251750
+Using GROUP BY and HAVING
+You may want to look at these examples: Using GROUP BY and HAVING.
+
+Counting the countries of each continent
+6.
+For each continent show the continent and number of countries.
+
+select distinct(continent), count(name) from world
+group by continent 
+Submit SQLrestore default
+Correct answer
+continent	count(name)
+Africa	53
+Asia	47
+Caribbean	11
+Eurasia	2
+Europe	44
+North America	11
+Oceania	14
+South America	13
+Counting big countries in each continent
+7.
+For each continent show the continent and number of countries with populations of at least 10 million.
+
+select continent ,count(name)  from world where population > 10000000
+group by continent
+Submit SQLrestore default
+Correct answer
+continent	count(name)
+Africa	29
+Asia	26
+Caribbean	2
+Eurasia	1
+Europe	14
+North America	4
+Oceania	1
+South America	8
+Counting big continents
+8.
+List the continents that have a total population of at least 100 million.
+
+select continent from world group  by continent having
+sum(population)> 100000000
+
+Submit SQLrestore default
+Correct answer
+continent
+Africa
+Asia
+Eurasia
+Europe
+North America
+South America
